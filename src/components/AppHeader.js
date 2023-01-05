@@ -23,7 +23,14 @@ const AppHeader = (props) => {
 	return (
 		<Header
 			leftComponent={leftComponent?leftComponent:(
-			  null
+				// <View style={styles.headerRight}>
+				// 	<TouchableOpacity
+				// 	  style={{ marginLeft: 10 }}
+				// 	>
+				// 	  <Icon type="font-awesome-5" name="arrow-" color="white" />
+				// 	</TouchableOpacity>
+			  	// </View>
+				null
 			)}
 			rightComponent={rightComponent?rightComponent:(
 				<View style={styles.headerRight}>

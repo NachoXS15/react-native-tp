@@ -26,7 +26,8 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-
+import {NavigationContainer} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import Header from '../components/AppHeader';
@@ -37,33 +38,38 @@ const height = Dimensions.get('window').height
 
 
 const Home = () => {
-  return (
+  const navigation = useNavigation();
+  const navigateTo = (route) => {
+    navigation.navigate(route)
+  }
 
+  return (
     <SafeAreaProvider >
     
 	  <Header />
-      <ImageBackground style={{width: width, height: height}} source={ require("../assets/images/image.jpg") }>
+      <ImageBackground style={{width: width, height: height}} source={ require("../assets/images/messi.jpg") }>
       <View style={{flex:1}}>
         <View style={{flexDirection:'row', flex:1}}>
           <View style={{...styles.wiewGrid, justifyContent: 'flex-end', paddingBottom:'10%'}}>
-			      <TouchableOpacity style={{...styles.buttonGrid, backgroundColor:'green'}}>
+			      <TouchableOpacity style={{...styles.buttonGrid, backgroundColor:'#fff'}}
+      >
 			      	<Text style={styles.textButton}>TAREAS</Text>
 			      </TouchableOpacity>
           </View>
           <View style={{...styles.wiewGrid, justifyContent: 'flex-end', paddingBottom:'10%'}}>
-            <TouchableOpacity style={{...styles.buttonGrid, backgroundColor:'pink'}}>
+            <TouchableOpacity style={{...styles.buttonGrid, backgroundColor:'#fff'}} onPress={()=>navigateTo('Profile')}>
 			  	    <Text style={styles.textButton}>PERFIL</Text>
 			      </TouchableOpacity>
           </View>
         </View>
 	    <View style={{flexDirection:'row', flex:1}}>
 	      	<View style={{...styles.wiewGrid, justifyContent: 'flex-start'}}>
-		    	  <TouchableOpacity style={{...styles.buttonGrid, backgroundColor:'blue'}}>
-		    	  	<Text style={styles.textButton}>POKEDEX</Text>
+		    	  <TouchableOpacity style={{...styles.buttonGrid, backgroundColor:'#fff'}} onPress={()=>navigateTo('List')}>
+		    	  	<Text style={styles.textButton}>LISTAS</Text>
 		    	  </TouchableOpacity>
           </View>
           <View style={{...styles.wiewGrid, justifyContent: 'flex-start'}}>
-		    	<TouchableOpacity style={{...styles.buttonGrid, backgroundColor:'purple'}}>
+		    	<TouchableOpacity style={{...styles.buttonGrid, backgroundColor:'#fff'}} onPress={()=>navigateTo('Maps')}>
 		    		<Text style={styles.textButton}>MAPA</Text>
 		    	</TouchableOpacity>
           </View>
@@ -78,7 +84,9 @@ const Home = () => {
 const styles = StyleSheet.create({
   textButton:{
     textAlign:'center',
-    color:'#fff'
+    color:'#000',
+    fontWeight: '600',
+    fontSize: 20
   },
   wiewGrid: {
     flex:1,

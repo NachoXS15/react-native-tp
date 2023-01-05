@@ -40,7 +40,7 @@ const GoogleMap = () => {
   return (
 
     <SafeAreaProvider>
-        <Header />
+        <Header title='Google Maps'/>
         <View style={styles.wiewGrid}>
 			<Text style={styles.textButton}>Google Maps</Text>
 	    </View>

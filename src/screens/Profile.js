@@ -40,7 +40,7 @@ const Profile = () => {
   return (
 
     <SafeAreaProvider>
-      <Header />
+      <Header title='Profile'/>
         <View style={styles.wiewGrid}>
 			    <Text style={styles.textButton}>Profile</Text>
 	      </View>

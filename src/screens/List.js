@@ -40,7 +40,7 @@ const List = () => {
   return (
 
     <SafeAreaProvider>
-        <Header />
+        <Header title='List'/>
         <View style={styles.wiewGrid}>
 			<Text style={styles.textButton}>List</Text>
 	    </View>

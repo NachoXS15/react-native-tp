@@ -40,13 +40,12 @@ const Login = () => {
   return (
 
     <SafeAreaProvider >
-    
-	  <Header />
-      <View style={{flex:1}}>
-        <View style={{flexDirection:'row', flex:1}}>
-			<Text style={styles.textButton}>Login</Text>
-	    </View>
-      </View>
+  
+    <View style={{...styles.wiewGrid, paddingBottom:"5%"}}>
+            <TouchableOpacity style={{...styles.buttonGrid, backgroundColor:"#183ed6"}}>
+                <Text style={styles.textButton}>LOGIN</Text>
+            </TouchableOpacity>
+        </View>
     </SafeAreaProvider>
   );   
 };
