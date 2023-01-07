@@ -13,11 +13,17 @@ import {
   View
 } from 'react-native';
 
+import { useDispatch } from 'react-redux';
+import { appActions } from '../redux/appRedux';
 
 import { Header, Icon } from '@rneui/themed';
 
 
 const AppHeader = (props) => {
+	const dispatch = useDispatch();
+	const logOut = () => {
+		dispatch(appActions.setUser(false))
+	}
 
 	const {title= 'Pilar Tecno', rightComponent, leftComponent} = props;
 	return (
@@ -36,8 +42,9 @@ const AppHeader = (props) => {
 				<View style={styles.headerRight}>
 				  <TouchableOpacity
 					style={{ marginLeft: 10 }}
+					onPress={() => logOut()}
 				  >
-					<Icon type="antdesign" name="rocket1" color="white" />
+					<Icon type="font-awesome-5" name="arrow-right" color="white" />
 				  </TouchableOpacity>
 				</View>
 			)}

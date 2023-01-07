@@ -4,8 +4,23 @@ import Home from "../screens/Home";
 import Profile from '../screens/Profile'
 import GoogleMap from '../screens/GoogleMaps';
 import List from '../screens/List';
+import Tasks from '../screens/Tasks';
 import { Icon } from '@rneui/themed';
 import { Task } from '@mui/icons-material';
+
+const HomeStack = createStackNavigator();
+
+const HomeScreens = () => {
+  const session = true;
+  
+  return(
+      <HomeStack.Navigator screenOptions={{headerShown: false}}>
+        <HomeStack.Screen name="Home" component={Home}/>
+        <HomeStack.Screen name="Tasks" component={Tasks}/>
+      </HomeStack.Navigator>
+  );
+}
+
 
 
 const Tab = createMaterialBottomTabNavigator();
@@ -17,7 +32,7 @@ export const Tabs = () => {
       activeColor='blue' 
       barStyle={{backgroundColor: PRIMARY_COLOR}}
       >
-      <Tab.Screen name="Home" component={Home} options={{
+      <Tab.Screen name="Casa" component={HomeScreens} options={{
           tabBarLabel: 'Home',
           tabBarIcon: ({ color }) => (
             <Icon

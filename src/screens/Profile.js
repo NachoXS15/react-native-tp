@@ -31,24 +31,55 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import Header from '../components/AppHeader';
 import 'react-native-gesture-handler';
-
+import { useSelector } from 'react-redux';
+import { appActions, appSelector } from '../redux/appRedux';
+import { useNavigation } from '@react-navigation/native';
+import { Icon } from '@rneui/themed';
 const width = Dimensions.get('window').width
 const height = Dimensions.get('window').height
 
 
-const Profile = () => {
-  return (
+const Profile = (props) => {
 
+  const user = useSelector(appSelector.user)
+
+  const {leftComponent} = props;
+
+  const navigation = useNavigation();
+  const navigateTo = (route) => {
+    navigation.navigate(route)
+  }
+
+  return (
     <SafeAreaProvider>
-      <Header title='Profile'/>
+      <Header title='Profile'
+        leftComponent={leftComponent?leftComponent:(
+				<View>
+				  <TouchableOpacity
+					style={{ marginLeft: 10 }}
+					onPress={() => navigateTo('Home')}
+				  >
+					<Icon type="font-awesome-5" name="arrow-left" color="white" />
+				  </TouchableOpacity>
+				</View>
+			)}
+
+      />
         <View style={styles.wiewGrid}>
-			    <Text style={styles.textButton}>Profile</Text>
+			    <Text style={styles.highlightText}>{user.name}</Text>
+          <Text style={styles.textButton}>{user.type}</Text>
 	      </View>
     </SafeAreaProvider>
   );   
 };
 
 const styles = StyleSheet.create({
+  highlightText:{
+    color:'black',
+    fontSize: 25,
+    fontWeight:'600',
+    textDecorationLine: 'underline'
+  },
   textButton:{
     color:'black',
     fontSize: 20,

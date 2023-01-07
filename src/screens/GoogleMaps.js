@@ -31,23 +31,40 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import Header from '../components/AppHeader';
 import 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
+import { Icon } from '@rneui/themed';
 
 const width = Dimensions.get('window').width
 const height = Dimensions.get('window').height
 
 
-const GoogleMap = () => {
-  return (
+const GoogleMap = (props) => {
 
+  const {leftComponent} = props;
+  const navigation = useNavigation();
+  const navigateTo = (route) => {
+    navigation.navigate(route)
+  }
+  return (
     <SafeAreaProvider>
-        <Header title='Google Maps'/>
+         <Header title='Google Map'
+            leftComponent={leftComponent?leftComponent:(
+				    <View>
+				      <TouchableOpacity
+				    	style={{ marginLeft: 10 }}
+				    	onPress={() => navigateTo('Home')}
+				      >
+				    	<Icon type="font-awesome-5" name="arrow-left" color="white" />
+				      </TouchableOpacity>
+				    </View>
+			)}
+      />
         <View style={styles.wiewGrid}>
-			<Text style={styles.textButton}>Google Maps</Text>
+			<Text style={styles.textButton}>GoogleMap</Text>
 	    </View>
     </SafeAreaProvider>
   );   
 };
-
 const styles = StyleSheet.create({
   textButton:{
     color:'black',

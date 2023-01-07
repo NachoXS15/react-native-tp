@@ -51,7 +51,7 @@ const Home = () => {
       <View style={{flex:1}}>
         <View style={{flexDirection:'row', flex:1}}>
           <View style={{...styles.wiewGrid, justifyContent: 'flex-end', paddingBottom:'10%'}}>
-			      <TouchableOpacity style={{...styles.buttonGrid, backgroundColor:'#fff'}}
+			      <TouchableOpacity style={{...styles.buttonGrid, backgroundColor:'#fff'}} onPress={()=>navigateTo('Tasks')}
       >
 			      	<Text style={styles.textButton}>TAREAS</Text>
 			      </TouchableOpacity>

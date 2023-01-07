@@ -31,16 +31,34 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import Header from '../components/AppHeader';
 import 'react-native-gesture-handler';
+import { Icon } from '@rneui/themed';
+import { useNavigation } from '@react-navigation/native';
 
 const width = Dimensions.get('window').width
 const height = Dimensions.get('window').height
 
 
-const List = () => {
-  return (
+const List = (props) => {
 
+  const {leftComponent} = props;
+  const navigation = useNavigation();
+  const navigateTo = (route) => {
+    navigation.navigate(route)
+  }
+  return (
     <SafeAreaProvider>
-        <Header title='List'/>
+         <Header title='list'
+            leftComponent={leftComponent?leftComponent:(
+				    <View>
+				      <TouchableOpacity
+				    	style={{ marginLeft: 10 }}
+				    	onPress={() => navigateTo('Home')}
+				      >
+				    	<Icon type="font-awesome-5" name="arrow-left" color="white" />
+				      </TouchableOpacity>
+				    </View>
+			)}
+      />
         <View style={styles.wiewGrid}>
 			<Text style={styles.textButton}>List</Text>
 	    </View>

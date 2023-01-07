@@ -31,21 +31,26 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import Header from '../components/AppHeader';
 import 'react-native-gesture-handler';
+import { Button } from '@rneui/base';
+import { useDispatch } from 'react-redux';
+import { appActions } from '../redux/appRedux';
 
 const width = Dimensions.get('window').width
 const height = Dimensions.get('window').height
 
 
 const Login = () => {
-  return (
 
+  const dispatch = useDispatch()
+  const setAuth = () =>{
+    dispatch(appActions.setUser({name: 'NachoXS', rol: 'admin', type:'FrontEnd Developer'}))
+  }
+
+  return (
     <SafeAreaProvider >
-  
-    <View style={{...styles.wiewGrid, paddingBottom:"5%"}}>
-            <TouchableOpacity style={{...styles.buttonGrid, backgroundColor:"#183ed6"}}>
-                <Text style={styles.textButton}>LOGIN</Text>
-            </TouchableOpacity>
-        </View>
+      <View style={{...styles.wiewGrid}}>
+          <Button title='Ingresar' onPress={()=>setAuth()} />
+      </View>
     </SafeAreaProvider>
   );   
 };
