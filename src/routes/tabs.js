@@ -7,6 +7,7 @@ import List from '../screens/List';
 import Tasks from '../screens/Tasks';
 import { Icon } from '@rneui/themed';
 import { Task } from '@mui/icons-material';
+import ListDetail from '../screens/ListDetail';
 
 const HomeStack = createStackNavigator();
 
@@ -18,6 +19,19 @@ const HomeScreens = () => {
         <HomeStack.Screen name="Home" component={Home}/>
         <HomeStack.Screen name="Tasks" component={Tasks}/>
       </HomeStack.Navigator>
+  );
+}
+
+const ListStack = createStackNavigator();
+
+const ListScreens = () => {
+  const session = true;
+  
+  return(
+      <ListStack.Navigator screenOptions={{headerShown: false}}>
+        <ListStack.Screen name="List" component={List}/>
+        <ListStack.Screen name="ListDetail" component={ListDetail}/>
+      </ListStack.Navigator>
   );
 }
 
@@ -62,7 +76,7 @@ export const Tabs = () => {
             />
           ),
         }}/>
-      <Tab.Screen name="List" component={List} options={{
+      <Tab.Screen name="Listas" component={ListScreens} options={{
           tabBarLabel: 'List',
           tabBarIcon: ({ color }) => (
             <Icon

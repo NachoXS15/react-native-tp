@@ -64,8 +64,8 @@ const Home = () => {
         </View>
 	    <View style={{flexDirection:'row', flex:1}}>
 	      	<View style={{...styles.wiewGrid, justifyContent: 'flex-start'}}>
-		    	  <TouchableOpacity style={{...styles.buttonGrid, backgroundColor:'#fff'}} onPress={()=>navigateTo('List')}>
-		    	  	<Text style={styles.textButton}>LISTAS</Text>
+		    	  <TouchableOpacity style={{...styles.buttonGrid, backgroundColor:'#fff'}} onPress={()=>navigateTo('Listas')}>
+		    	  	<Text style={styles.textButton}>POKEDEX</Text>
 		    	  </TouchableOpacity>
           </View>
           <View style={{...styles.wiewGrid, justifyContent: 'flex-start'}}>
